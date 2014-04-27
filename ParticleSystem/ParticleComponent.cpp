@@ -10,3 +10,8 @@ CParticleComponent::CParticleComponent(void)
 CParticleComponent::~CParticleComponent(void)
 {
 }
+
+void CParticleComponent::Update(float gameTime, Particle particle)
+{
+
+}
