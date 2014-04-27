@@ -14,6 +14,6 @@ CParticleComponent::~CParticleComponent(void)
 
 void CParticleComponent::Update(Particle* particle, float dt)
 {
-
+	
 }
 

@@ -102,6 +102,8 @@
     <None Include="UserImages.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AccelerationComponent.h" />
+    <ClInclude Include="AlphaComponent.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="OpenGLWnd.h" />
@@ -113,6 +115,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AccelerationComponent.cpp" />
+    <ClCompile Include="AlphaComponent.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="OpenGLWnd.cpp" />
