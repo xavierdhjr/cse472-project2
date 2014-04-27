@@ -21,7 +21,7 @@ CChildView::CChildView()
 	m_current = std::clock();
 	
 	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-0.05,0));
-	emitter = new CParticleEmitter(vec3(0,0,0), 0.5f, 2, 0.1);
+	emitter = new CParticleEmitter(vec3(0,0,0), 5.5f, 2, 0.1);
 	emitter->RegisterComponent(accel);
 	m_Timer = 0;
 
@@ -85,7 +85,7 @@ void CChildView::OnGLDraw(CDC * pDC)
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    gluLookAt(0, 0., 25.,    // eye x,y,z
+    gluLookAt(0, 0., 50.,    // eye x,y,z
         0., 0., 0.,       // center x,y,z
         0., 1., 0.);      // Up direction
 
