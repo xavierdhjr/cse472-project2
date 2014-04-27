@@ -60,6 +60,12 @@
     <ClInclude Include="ParticleComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AccelerationComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AlphaComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ParticleSystem.cpp">
@@ -81,6 +87,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ParticleComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AccelerationComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AlphaComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
