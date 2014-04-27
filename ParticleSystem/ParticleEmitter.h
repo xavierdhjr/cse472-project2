@@ -37,13 +37,21 @@ struct CParticle
 	CGrTexture* texture;
 };
 
+
 class CParticleEmitter
 {
 
 
 public:
+	enum EmitterType 
+	{
+		Sphere,
+		Box
+	};
+
 	CParticleEmitter(void);
-	CParticleEmitter(vec3 startPosition, float emissionRate = 0.5f, float lifetime=10, float size=1, vec3 initialVelocity = vec3(0,0,0), bool randomStartDirection=false);
+	CParticleEmitter(vec3 startPosition, float radius, float emissionRate = 0.5f, float lifetime=10, float size=1, vec3 initialVelocity = vec3(0,0,0), bool randomStartDirection=false);
+	CParticleEmitter(vec3 startPosition, float height, float width, float emissionRate = 0.5f, float lifetime=10, float size=1, vec3 initialVelocity = vec3(0,0,0), bool randomStartDirection=false);
 	~CParticleEmitter(void);
 
 	void RegisterComponent(CParticleComponent * component);
@@ -60,5 +68,11 @@ private:
 	float m_lifetime;
 	float m_size;
 	void DrawParticle(std::vector<CParticle *>::iterator it, float gameTime);
+
+	// properties of initial emission mesh
+	EmitterType m_type;
+	float m_radius;
+	float m_height;
+	float m_width;
 };
 

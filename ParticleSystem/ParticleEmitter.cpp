@@ -20,13 +20,29 @@ inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
     glEnd();
 }
 
-CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate, float lifetime, float size, vec3 initialVelocity, bool randomStartDirection)
+CParticleEmitter::CParticleEmitter(vec3 startPosition, float radius, float emissionRate, float lifetime, float size, vec3 initialVelocity, bool randomStartDirection)
 {
 	m_startPosition = startPosition;
 	m_emissionRate = emissionRate;
 	m_timer = 0;
 	m_lifetime = lifetime;
 	m_size = size;
+
+	m_type = CParticleEmitter::Sphere;
+	m_radius = radius;
+}
+
+CParticleEmitter::CParticleEmitter(vec3 startPosition, float height, float width, float emissionRate, float lifetime, float size, vec3 initialVelocity, bool randomStartDirection)
+{
+	m_startPosition = startPosition;
+	m_emissionRate = emissionRate;
+	m_timer = 0;
+	m_lifetime = lifetime;
+	m_size = size;
+
+	m_type = CParticleEmitter::Box;
+	m_height = height;
+	m_width = width;
 }
 
 CParticleEmitter::CParticleEmitter(void)
