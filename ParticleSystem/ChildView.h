@@ -9,6 +9,8 @@
 // CChildView window
 #include "OpenGLWnd.h"
 
+#include "ParticleEmitter.h"
+
 class CChildView : public COpenGLWnd
 {
 // Construction
@@ -17,6 +19,7 @@ public:
 
 // Attributes
 public:
+	CParticleEmitter emitter;
 
 // Operations
 public:

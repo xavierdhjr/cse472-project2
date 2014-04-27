@@ -5,8 +5,10 @@
 
 using namespace std;
 
-CParticleEmitter::CParticleEmitter(void)
+CParticleEmitter::CParticleEmitter(vec3 startPosition, int emissionRate)
 {
+	m_startPosition = startPosition;
+	m_emissionRate = emissionRate;
 }
 
 
@@ -23,5 +25,10 @@ void CParticleEmitter::Update(float gameTime)
 		{
 			(*itc)->Update(*it, gameTime);
 		}
+
+		// draw known particles
+
 	}
+
+	// add particles
 }

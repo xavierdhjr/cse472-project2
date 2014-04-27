@@ -32,13 +32,18 @@ class CParticleEmitter
 
 
 public:
-	CParticleEmitter(void);
+	CParticleEmitter(vec3 startPositon, int emissionRate);
 	~CParticleEmitter(void);
 
+
+	
 	void Update(float gameTime);
 
 private:
 	std::vector<CParticleComponent *> m_components;
 	std::vector<CParticle *> m_particles;
+	int m_emissionRate;
+	vec3 m_startPosition;
+
 };
 
