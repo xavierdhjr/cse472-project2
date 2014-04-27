@@ -20,12 +20,13 @@ inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
     glEnd();
 }
 
-CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate, float lifetime)
+CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate, float lifetime, float size)
 {
 	m_startPosition = startPosition;
 	m_emissionRate = emissionRate;
 	m_timer = 0;
 	m_lifetime = lifetime;
+	m_size = size;
 }
 
 CParticleEmitter::CParticleEmitter(void)
@@ -92,6 +93,8 @@ void CParticleEmitter::Update(float gameTime)
 	{
 		// make a particle
 		CParticle *particle = new CParticle();
+		particle->lifetime = m_lifetime;
+		particle->size = m_size;
 		m_particles.push_back(particle);
 
 

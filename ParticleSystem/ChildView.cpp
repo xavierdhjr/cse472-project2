@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "ParticleSystem.h"
 #include "ChildView.h"
-
+#include "AccelerationComponent.h"
 #include <ctime>
 
 
@@ -19,7 +19,10 @@
 CChildView::CChildView()
 {
 	m_current = std::clock();
-	emitter = new CParticleEmitter(vec3(0,0,0), 0.25f, 2);
+	
+	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-0.05,0));
+	emitter = new CParticleEmitter(vec3(0,0,0), 0.5f, 2, 0.1);
+	emitter->RegisterComponent(accel);
 	m_Timer = 0;
 
 

@@ -43,7 +43,7 @@ class CParticleEmitter
 
 public:
 	CParticleEmitter(void);
-	CParticleEmitter(vec3 startPositon, float emissionRate, float lifetime);
+	CParticleEmitter(vec3 startPositon, float emissionRate, float lifetime, float m_size);
 	~CParticleEmitter(void);
 
 	void RegisterComponent(CParticleComponent * component);
@@ -58,6 +58,7 @@ private:
 	vec3 m_startPosition;
 	float m_timer;
 	float m_lifetime;
+	float m_size;
 	void DrawParticle(std::vector<CParticle *>::iterator it, float gameTime);
 };
 
