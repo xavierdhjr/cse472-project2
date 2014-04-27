@@ -62,6 +62,8 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 		(*itc)->Update(*it, gameTime);
 	}
 
+	CParticle* p = *it;
+
 	// update particle position based on velocity
 	(*it)->position = (*it)->position + (*it)->velocity;
 
@@ -71,7 +73,7 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	GLdouble c[] = {(*it)->position.x - (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
 	GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
 
-	glColor3d(0.7,0,0);
+	glColor3d(p->color.r,p->color.g,p->color.b);
 	Quad(a,c,d,b);
 }
 
