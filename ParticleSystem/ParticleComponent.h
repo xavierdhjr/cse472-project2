@@ -1,11 +1,13 @@
 #pragma once
-#include "ParticleEmitter.h"
+struct CParticle;
+#include <gl/GL.h>
 
 class CParticleComponent
 {
 public:
 	CParticleComponent(void);
 	~CParticleComponent(void);
-	virtual void Update(Particle* particle, float dt) = 0;
+
+	virtual void Update(CParticle* particle, float dt) = 0;
 };
 

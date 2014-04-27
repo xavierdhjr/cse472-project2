@@ -64,6 +64,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ShaderWnd\ShaderWnd.h">
+    <ClInclude Include="AccelerationComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AlphaComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -96,6 +100,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShaderWnd\ShaderWnd.cpp">
+    <ClCompile Include="AccelerationComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AlphaComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

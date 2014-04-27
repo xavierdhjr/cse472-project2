@@ -1,5 +1,5 @@
 #pragma once
-class ParticleComponent;
+#include "ParticleComponent.h"
 #include <vector>
 #include "ShaderWnd\external\glew-1.9.0\include\GL\glew.h"
 #include <gl/gl.h>
@@ -15,7 +15,7 @@ class ParticleComponent;
 
 using namespace glm;
 
-struct Particle
+struct CParticle
 {
 	vec4 color;
 	vec3 position;
@@ -38,6 +38,7 @@ public:
 	void Update(float gameTime);
 
 private:
-	std::vector<ParticleComponent *> components;
+	std::vector<CParticleComponent *> m_components;
+	std::vector<CParticle *> m_particles;
 };
 
