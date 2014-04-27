@@ -37,24 +37,31 @@ CParticleEmitter::~CParticleEmitter(void)
 {
 }
 
+void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float gameTime)
+{
+	for(std::vector<CParticleComponent *>::iterator itc = m_components.begin(); itc != m_components.end(); ++itc) 
+	{
+		(*itc)->Update(*it, gameTime);
+	}
+
+	// update particle position based on velocity
+	(*it)->position = (*it)->position + (*it)->velocity;
+
+	// draw particle
+	GLdouble a[] = {(*it)->position.x - (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
+	GLdouble b[] = {(*it)->position.x + (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
+	GLdouble c[] = {(*it)->position.x - (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
+	GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
+
+	glColor3d(0.7,0,0);
+	Quad(a,c,d,b);
+}
 
 void CParticleEmitter::Update(float gameTime)
 {
 	for(std::vector<CParticle *>::iterator it = m_particles.begin(); it != m_particles.end(); ++it) 
 	{
-		for(std::vector<CParticleComponent *>::iterator itc = m_components.begin(); itc != m_components.end(); ++itc) 
-		{
-			(*itc)->Update(*it, gameTime);
-		}
-
-		// draw particle
-		GLdouble a[] = {(*it)->position.x - (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
-	    GLdouble b[] = {(*it)->position.x + (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
-		GLdouble c[] = {(*it)->position.x - (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
-		GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
-
-		glColor3d(0.7,0,0);
-		Quad(a,c,d,b);
+		DrawParticle(it, gameTime);
 
 		// check if particle should be destroyed
 		(*it)->age += gameTime;
@@ -66,19 +73,7 @@ void CParticleEmitter::Update(float gameTime)
 			{
 				break;
 			}
-			for(std::vector<CParticleComponent *>::iterator itc = m_components.begin(); itc != m_components.end(); ++itc) 
-			{
-				(*itc)->Update(*it, gameTime);
-			}
-
-			// draw particle
-			GLdouble a[] = {(*it)->position.x - (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
-			GLdouble b[] = {(*it)->position.x + (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
-			GLdouble c[] = {(*it)->position.x - (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
-			GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
-
-			glColor3d(0.7,0,0);
-			Quad(a,c,d,b);
+			DrawParticle(it, gameTime);
 		}
 
 		
