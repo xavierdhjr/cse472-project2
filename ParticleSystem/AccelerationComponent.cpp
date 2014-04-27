@@ -11,7 +11,7 @@ CAccelerationComponent::~CAccelerationComponent(void)
 {
 }
 
-void CAccelerationComponent::Update(Particle* particle, float dt)
+void CAccelerationComponent::Update(CParticle* particle, float dt)
 {
 
 }

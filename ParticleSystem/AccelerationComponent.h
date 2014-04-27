@@ -8,6 +8,6 @@ public:
 	CAccelerationComponent(void);
 	~CAccelerationComponent(void);
 
-	virtual void Update(Particle* particle, float dt);
+	virtual void Update(CParticle* particle, float dt);
 };
 

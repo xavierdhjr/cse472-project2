@@ -8,6 +8,6 @@ public:
 	CAlphaComponent(void);
 	~CAlphaComponent(void);
 
-	virtual void Update(Particle* particle, float dt);
+	virtual void Update(CParticle* particle, float dt);
 };
 
