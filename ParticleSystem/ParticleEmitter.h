@@ -32,6 +32,7 @@ class CParticleEmitter
 
 
 public:
+	CParticleEmitter(void);
 	CParticleEmitter(vec3 startPositon, int emissionRate);
 	~CParticleEmitter(void);
 

@@ -11,6 +11,11 @@ CParticleEmitter::CParticleEmitter(vec3 startPosition, int emissionRate)
 	m_emissionRate = emissionRate;
 }
 
+CParticleEmitter::CParticleEmitter(void)
+{
+
+}
+
 
 CParticleEmitter::~CParticleEmitter(void)
 {

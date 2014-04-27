@@ -1,5 +1,5 @@
 #pragma once
-#include "particlecomponent.h"
+#include "ParticleComponent.h"
 
 class CAlphaComponent :
 	public CParticleComponent

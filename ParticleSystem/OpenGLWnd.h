@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "ShaderWnd\external\glew-1.9.0\include\GL\glew.h"
 #include <gl/gl.h>
 #include <gl/glu.h>
 
