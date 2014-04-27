@@ -3,8 +3,7 @@
 #include <vector>
 
 struct CParticle
-{
-
+{	
 };
 
 class CParticleEmitter
