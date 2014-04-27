@@ -11,7 +11,7 @@ CAlphaComponent::~CAlphaComponent(void)
 {
 }
 
-void CAlphaComponent::Update(Particle* particle, float dt)
+void CAlphaComponent::Update(CParticle* particle, float dt)
 {
 
 }
