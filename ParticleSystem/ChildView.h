@@ -42,5 +42,9 @@ public:
 
 private:
 	std::clock_t m_current;
+	UINT_PTR m_Timer;
+public:
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+
 };
 

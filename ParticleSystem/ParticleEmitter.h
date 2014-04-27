@@ -22,7 +22,7 @@ struct CParticle
 		color = vec4(0,0,0,1);
 		position = vec3(0,0,0);
 		velocity = vec3(0,0,0);
-		lifetime = 4;
+		lifetime = 2;
 		age = 0;
 		size = 1;
 	}
@@ -43,7 +43,7 @@ class CParticleEmitter
 
 public:
 	CParticleEmitter(void);
-	CParticleEmitter(vec3 startPositon, int emissionRate);
+	CParticleEmitter(vec3 startPositon, float emissionRate);
 	~CParticleEmitter(void);
 
 
@@ -53,7 +53,7 @@ public:
 private:
 	std::vector<CParticleComponent *> m_components;
 	std::vector<CParticle *> m_particles;
-	int m_emissionRate;
+	float m_emissionRate;
 	vec3 m_startPosition;
 	float m_timer;
 };

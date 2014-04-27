@@ -20,7 +20,7 @@ inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
     glEnd();
 }
 
-CParticleEmitter::CParticleEmitter(vec3 startPosition, int emissionRate)
+CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate)
 {
 	m_startPosition = startPosition;
 	m_emissionRate = emissionRate;
@@ -54,14 +54,31 @@ void CParticleEmitter::Update(float gameTime)
 		GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
 
 		glColor3d(0.7,0,0);
-		Quad(a,b,c,d);
+		Quad(a,c,d,b);
 
 		// check if particle should be destroyed
 		(*it)->age += gameTime;
 		if((*it)->age > (*it)->lifetime)
 		{
 			it = m_particles.erase(it);
-			it--; // reset
+			//it--; // reset
+			if(it == m_particles.end())
+			{
+				break;
+			}
+			for(std::vector<CParticleComponent *>::iterator itc = m_components.begin(); itc != m_components.end(); ++itc) 
+			{
+				(*itc)->Update(*it, gameTime);
+			}
+
+			// draw particle
+			GLdouble a[] = {(*it)->position.x - (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
+			GLdouble b[] = {(*it)->position.x + (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
+			GLdouble c[] = {(*it)->position.x - (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
+			GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
+
+			glColor3d(0.7,0,0);
+			Quad(a,c,d,b);
 		}
 
 		
@@ -72,7 +89,7 @@ void CParticleEmitter::Update(float gameTime)
 	// figure out emission rate, and add particles accordingly
 	m_timer += gameTime;
 
-	if(m_timer > m_emissionRate)
+	if(m_timer > 1/m_emissionRate)
 	{
 		// make a particle
 		CParticle *particle = new CParticle();

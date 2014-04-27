@@ -319,6 +319,8 @@ void COpenGLWnd::OnGLDraw(CDC *pDC)
    glClearColor(0.3f, 0.7f, 0.3f, 0.0f) ;
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
+
    glFlush();
 }
 
