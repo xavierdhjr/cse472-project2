@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include <vector>
+#include <math.h>
 #include "ParticleEmitter.h"
 #include "ParticleComponent.h"
 
@@ -18,6 +19,17 @@ inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
     glVertex3dv(v3);
     glVertex3dv(v4);
     glEnd();
+}
+
+CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate, float lifetime, float size, vec3 initialVelocity, bool randomStartDirection)
+{
+	m_startPosition = startPosition;
+	m_emissionRate = emissionRate;
+	m_timer = 0;
+	m_lifetime = lifetime;
+	m_size = size;
+
+	m_type = CParticleEmitter::Point;
 }
 
 CParticleEmitter::CParticleEmitter(vec3 startPosition, float radius, float emissionRate, float lifetime, float size, vec3 initialVelocity, bool randomStartDirection)
@@ -113,6 +125,27 @@ void CParticleEmitter::Update(float gameTime)
 		CParticle *particle = new CParticle();
 		particle->lifetime = m_lifetime;
 		particle->size = m_size;
+		float x, y, ylim;
+		// determine starting location
+		switch(m_type)
+		{
+			case Point:
+				break;
+			case Sphere:
+				// figure out random location within box
+				x = fmod(rand() , (2*m_radius)) - m_radius;
+				ylim = sqrt(m_radius * m_radius - x * x);
+				y = fmod(rand(), (2 * ylim)) - ylim;
+				particle->position = vec3(x,y,0);
+				break;
+			case Box:
+				x = fmod(rand(), (2*m_width)) - m_width;
+				y = fmod(rand(), (2 * m_height)) - m_height;
+				particle->position = vec3(x,y,0);
+				break;
+
+		}
+
 		m_particles.push_back(particle);
 
 
