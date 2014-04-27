@@ -1,8 +1,8 @@
 #pragma once
-class ParticleComponent;
+#include "ParticleComponent.h"
 #include <vector>
 
-struct Particle
+struct CParticle
 {
 
 };
@@ -18,6 +18,7 @@ public:
 	void Update(float gameTime);
 
 private:
-	std::vector<ParticleComponent *> components;
+	std::vector<CParticleComponent *> m_components;
+	std::vector<CParticle *> m_particles;
 };
 
