@@ -23,6 +23,7 @@ CChildView::CChildView()
 	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-0.05,0));
 	emitter = new CParticleEmitter(vec3(0,0,0), 5.5f, 2, 0.1);
 	emitter->RegisterComponent(accel);
+
 	m_Timer = 0;
 
 

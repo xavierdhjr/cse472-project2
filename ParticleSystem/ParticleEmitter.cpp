@@ -20,7 +20,7 @@ inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
     glEnd();
 }
 
-CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate, float lifetime, float size)
+CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate, float lifetime, float size, vec3 initialVelocity, bool randomStartDirection)
 {
 	m_startPosition = startPosition;
 	m_emissionRate = emissionRate;

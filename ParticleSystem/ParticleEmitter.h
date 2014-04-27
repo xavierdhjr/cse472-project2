@@ -43,7 +43,7 @@ class CParticleEmitter
 
 public:
 	CParticleEmitter(void);
-	CParticleEmitter(vec3 startPositon, float emissionRate, float lifetime, float m_size);
+	CParticleEmitter(vec3 startPosition, float emissionRate = 0.5f, float lifetime=10, float size=1, vec3 initialVelocity = vec3(0,0,0), bool randomStartDirection=false);
 	~CParticleEmitter(void);
 
 	void RegisterComponent(CParticleComponent * component);
