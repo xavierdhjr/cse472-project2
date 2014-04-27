@@ -19,7 +19,7 @@
 CChildView::CChildView()
 {
 	m_current = std::clock();
-	emitter = new CParticleEmitter(vec3(0,0,0), 0.25f);
+	emitter = new CParticleEmitter(vec3(0,0,0), 0.25f, 2);
 	m_Timer = 0;
 
 

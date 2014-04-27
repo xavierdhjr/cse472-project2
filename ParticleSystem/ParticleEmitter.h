@@ -21,7 +21,7 @@ struct CParticle
 	{
 		color = vec4(0,0,0,1);
 		position = vec3(0,0,0);
-		velocity = vec3(0,0.05,0);
+		velocity = vec3(0,0,0);
 		lifetime = 2;
 		age = 0;
 		size = 1;
@@ -43,9 +43,10 @@ class CParticleEmitter
 
 public:
 	CParticleEmitter(void);
-	CParticleEmitter(vec3 startPositon, float emissionRate);
+	CParticleEmitter(vec3 startPositon, float emissionRate, float lifetime);
 	~CParticleEmitter(void);
 
+	void RegisterComponent(CParticleComponent * component);
 
 	
 	void Update(float gameTime);
@@ -56,6 +57,7 @@ private:
 	float m_emissionRate;
 	vec3 m_startPosition;
 	float m_timer;
+	float m_lifetime;
 	void DrawParticle(std::vector<CParticle *>::iterator it, float gameTime);
 };
 

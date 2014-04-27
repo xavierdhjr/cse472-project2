@@ -20,11 +20,12 @@ inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
     glEnd();
 }
 
-CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate)
+CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate, float lifetime)
 {
 	m_startPosition = startPosition;
 	m_emissionRate = emissionRate;
 	m_timer = 0;
+	m_lifetime = lifetime;
 }
 
 CParticleEmitter::CParticleEmitter(void)
@@ -57,6 +58,11 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	Quad(a,c,d,b);
 }
 
+void CParticleEmitter::RegisterComponent(CParticleComponent *component)
+{
+	m_components.push_back(component);
+}
+
 void CParticleEmitter::Update(float gameTime)
 {
 	for(std::vector<CParticle *>::iterator it = m_particles.begin(); it != m_particles.end(); ++it) 
@@ -75,8 +81,6 @@ void CParticleEmitter::Update(float gameTime)
 			}
 			DrawParticle(it, gameTime);
 		}
-
-		
 
 	}
 
