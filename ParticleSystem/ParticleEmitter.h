@@ -1,13 +1,17 @@
 #pragma once
+struct Particle
+{
+
+};
+
 class CParticleEmitter
 {
-	struct Particle
-	{
 
-	};
 
 public:
 	CParticleEmitter(void);
 	~CParticleEmitter(void);
+
+	void Update(float gameTime);
 };
 
