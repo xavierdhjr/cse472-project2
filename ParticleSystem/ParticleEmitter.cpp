@@ -73,7 +73,7 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	GLdouble c[] = {(*it)->position.x - (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
 	GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
 
-	glColor3d(p->color.r,p->color.g,p->color.b);
+	glColor4f(p->color.r,p->color.g,p->color.b, p->color.a);
 	Quad(a,c,d,b);
 }
 
