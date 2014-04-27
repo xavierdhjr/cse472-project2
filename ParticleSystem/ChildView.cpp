@@ -6,6 +6,9 @@
 #include "ParticleSystem.h"
 #include "ChildView.h"
 
+#include <ctime>
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -15,6 +18,8 @@
 
 CChildView::CChildView()
 {
+	m_current = std::clock();
+	emitter = new CParticleEmitter(vec3(0,0,0), 1);
 }
 
 CChildView::~CChildView()
@@ -51,4 +56,9 @@ void CChildView::OnGLDraw(CDC * pDC)
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f) ;
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
+	// update stuffs
+	emitter->Update((float)(( std::clock() - m_current ) / (double) CLOCKS_PER_SEC));
+
+	m_current= std::clock();
 }

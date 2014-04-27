@@ -8,8 +8,10 @@
 
 // CChildView window
 #include "OpenGLWnd.h"
+#include <ctime>
 
 #include "ParticleEmitter.h"
+
 
 class CChildView : public COpenGLWnd
 {
@@ -19,7 +21,7 @@ public:
 
 // Attributes
 public:
-	CParticleEmitter emitter;
+	CParticleEmitter * emitter;
 
 // Operations
 public:
@@ -37,5 +39,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	void OnGLDraw(CDC * pDC);
+
+private:
+	std::clock_t m_current;
 };
 
