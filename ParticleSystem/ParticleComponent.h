@@ -1,6 +1,5 @@
 #pragma once
 struct CParticle;
-#include <gl/GL.h>
 
 class CParticleComponent
 {
