@@ -17,13 +17,23 @@ using namespace glm;
 
 struct CParticle
 {
+	CParticle()
+	{
+		color = vec4(0,0,0,1);
+		position = vec3(0,0,0);
+		velocity = vec3(0,0,0);
+		lifetime = 4;
+		age = 0;
+		size = 1;
+	}
+
 	vec4 color;
 	vec3 position;
+	vec3 velocity;
 	mat4 rotation;
 	int lifetime;
-	int age;
+	float age;
 	float size;
-	vec3 velocity;
 	CGrTexture* texture;
 };
 
@@ -45,6 +55,6 @@ private:
 	std::vector<CParticle *> m_particles;
 	int m_emissionRate;
 	vec3 m_startPosition;
-
+	float m_timer;
 };
 
