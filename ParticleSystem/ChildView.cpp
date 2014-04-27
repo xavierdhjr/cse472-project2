@@ -7,6 +7,7 @@
 #include "ChildView.h"
 #include "AccelerationComponent.h"
 #include "AlphaOverLifetimeComponent.h"
+#include "RandomDirectionComponent.h"
 #include <ctime>
 
 
@@ -22,9 +23,10 @@ CChildView::CChildView()
 	m_current = std::clock();
 	
 	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
-	emitter = new CParticleEmitter(vec3(0,0,0), 1, 5.5f, 0.5f, 0.1, vec3(0,0,0), false);
+	emitter = new CParticleEmitter(vec3(0,0,0), 1, 20.5f, 0.5f, 0.1, vec3(0,0,0), false);
 	emitter->RegisterComponent(accel);
 	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
+	emitter->RegisterComponent(new CRandomDirectionComponent());
 	m_Timer = 0;
 
 
