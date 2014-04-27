@@ -12,7 +12,7 @@ CParticleComponent::~CParticleComponent(void)
 }
 
 
-void CParticleComponent::Update(Particle* particle, float dt)
+void CParticleComponent::Update(CParticle* particle, float dt)
 {
 
 }
