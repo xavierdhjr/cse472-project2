@@ -1,4 +1,7 @@
 #pragma once
+class ParticleComponent;
+#include <vector>
+
 struct Particle
 {
 
@@ -13,5 +16,8 @@ public:
 	~CParticleEmitter(void);
 
 	void Update(float gameTime);
+
+private:
+	std::vector<ParticleComponent *> components;
 };
 
