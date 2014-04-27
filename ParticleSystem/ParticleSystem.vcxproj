@@ -104,6 +104,7 @@
   <ItemGroup>
     <ClInclude Include="AccelerationComponent.h" />
     <ClInclude Include="AlphaComponent.h" />
+    <ClInclude Include="AlphaOverLifetimeComponent.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="graphics\GrTexture.h" />
     <ClInclude Include="MainFrm.h" />
@@ -118,6 +119,7 @@
   <ItemGroup>
     <ClCompile Include="AccelerationComponent.cpp" />
     <ClCompile Include="AlphaComponent.cpp" />
+    <ClCompile Include="AlphaOverLifetimeComponent.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="graphics\GrTexture.cpp" />
     <ClCompile Include="MainFrm.cpp" />

@@ -6,6 +6,7 @@
 #include "ParticleSystem.h"
 #include "ChildView.h"
 #include "AccelerationComponent.h"
+#include "AlphaOverLifetimeComponent.h"
 #include <ctime>
 
 
@@ -20,10 +21,10 @@ CChildView::CChildView()
 {
 	m_current = std::clock();
 	
-	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-0.05,0));
-	emitter = new CParticleEmitter(vec3(0,0,0), 1, 5.5f, 2, 0.1, vec3(0,0,0), false);
+	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-9.81f,0));
+	emitter = new CParticleEmitter(vec3(0,0,0), 1, 5.5f, 0.5f, 0.1, vec3(0,0,0), false);
 	emitter->RegisterComponent(accel);
-
+	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
 	m_Timer = 0;
 
 
@@ -100,6 +101,8 @@ void CChildView::OnGLDraw(CDC * pDC)
     // Cull backfacing polygons
     glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 
     // Draw a coordinate axis
     glColor3d(0., 1., 1.);

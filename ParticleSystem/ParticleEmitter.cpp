@@ -65,7 +65,7 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	CParticle* p = *it;
 
 	// update particle position based on velocity
-	(*it)->position = (*it)->position + (*it)->velocity;
+	(*it)->position = (*it)->position + (*it)->velocity * gameTime;
 
 	// draw particle
 	GLdouble a[] = {(*it)->position.x - (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};

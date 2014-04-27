@@ -1,5 +1,4 @@
 #pragma once
-#include "ParticleComponent.h"
 #include <vector>
 #include "ShaderWnd\external\glew-1.9.0\include\GL\glew.h"
 #include <gl/gl.h>
@@ -14,6 +13,9 @@
 #include "graphics/GrTexture.h"
 
 using namespace glm;
+
+// fwd declaration so components have all the includes / structs from here
+class CParticleComponent;
 
 struct CParticle
 {
@@ -31,7 +33,7 @@ struct CParticle
 	vec3 position;
 	vec3 velocity;
 	mat4 rotation;
-	int lifetime;
+	float lifetime;
 	float age;
 	float size;
 	CGrTexture* texture;
