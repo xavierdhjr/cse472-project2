@@ -10,3 +10,9 @@ CParticleEmitter::CParticleEmitter(void)
 CParticleEmitter::~CParticleEmitter(void)
 {
 }
+
+
+void CParticleEmitter::Update(float gameTime)
+{
+
+}

@@ -6,6 +6,7 @@ class CParticleComponent
 public:
 	CParticleComponent(void);
 	~CParticleComponent(void);
-	virtual void Update(Particle* particle, float dt) = 0;
+
+	void Update(float gameTime, Particle particle);
 };
 
