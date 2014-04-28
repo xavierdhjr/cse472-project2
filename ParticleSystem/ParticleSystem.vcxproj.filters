@@ -47,7 +47,4 @@
     <None Include="UserImages.bmp" />
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\..\..\..\..\..\Program Files (x86)\Mega-Nerd\libsndfile\lib\libsndfile-1.lib" />
-  </ItemGroup>
 </Project>

@@ -143,9 +143,6 @@
   <ItemGroup>
     <ResourceCompile Include="ParticleSystem.rc" />
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\..\..\..\..\..\Program Files (x86)\Mega-Nerd\libsndfile\lib\libsndfile-1.lib" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
