@@ -25,20 +25,25 @@ CChildView::CChildView()
 {
 	m_current = std::clock();
 	
+	emitter = new CParticleEmitter();
+	emitter->SetEmissionRate(40000000.5f);
+	
+
 	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
-	emitter = new CParticleEmitter(vec3(0,0,0), 100, 10, 40000000.5f, 3, 0.5, vec3(0,0,0), false);
-	//emitter->RegisterComponent(accel);
-	emitter->RegisterComponent(new CSpiralComponent());
-	//emitter->RegisterComponent(new CRotationComponent(10));
-	//emitter->RegisterComponent(new CWaveformComponent("C:\\Users\\Raider\\Desktop\\MSU\\SS14\\cse472-project2\\dub.wav"));
-	//emitter->RegisterComponent(new CRandomDirectionComponent());
+	//emitter = new CParticleEmitter(vec3(0,0,0), 100, 10, 40000000.5f, 3, 0.5, vec3(0,0,0), false);
+	emitter->RegisterComponent(accel);
+	//emitter->RegisterComponent(new CSpiralComponent());
+	emitter->RegisterComponent(new CRotationComponent(10));
+	emitter->RegisterComponent(new CWaveformComponent("C:\\Users\\Raider\\Desktop\\MSU\\SS14\\cse472-project2\\dub.wav"));
+	emitter->RegisterComponent(new CRandomDirectionComponent());
 	m_Timer = 0;
 
 
 }
 
 CChildView::~CChildView()
-{
+{	
+	delete emitter;
 }
 
 

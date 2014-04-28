@@ -59,12 +59,30 @@ CParticleEmitter::CParticleEmitter(vec3 startPosition, float height, float width
 
 CParticleEmitter::CParticleEmitter(void)
 {
+	m_startPosition = vec3(0,0,0);
+	m_emissionRate = 5;
+	m_timer = 0;
+	m_lifetime = 0.5f;
+	m_size = 0.25f;
 
+	m_type = CParticleEmitter::Box;
+	m_height = 1;
+	m_width = 1;
 }
 
 
 CParticleEmitter::~CParticleEmitter(void)
 {
+	
+	for(int i = 0; i < m_components.size(); ++i)
+	{
+		delete m_components[i];
+	}
+	
+	for(int i = 0; i < m_particles.size(); ++i)
+	{
+		delete m_particles[i];
+	}
 }
 
 void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float gameTime)
@@ -125,6 +143,7 @@ void CParticleEmitter::Update(float gameTime)
 		(*it)->age += gameTime;
 		if((*it)->age > (*it)->lifetime)
 		{
+			delete (*it);
 			it = m_particles.erase(it);
 			//it--; // reset
 			if(it == m_particles.end())

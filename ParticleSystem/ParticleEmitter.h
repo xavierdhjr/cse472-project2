@@ -62,6 +62,16 @@ public:
 
 	void RegisterComponent(CParticleComponent * component);
 
+	void SetStartPosition(vec3 pos){ m_startPosition = pos; }
+	void SetEmissionRate(float rate){ m_emissionRate = rate; }
+	void SetParticleLifetime(float lifetime){ m_lifetime = lifetime; }
+	void SetParticleSize(float size){ m_size = size; }
+	void SetInitialVelocity(vec3 velocity){  }
+	void SetWidth(float width){ m_width = width; }
+	void SetHeight(float height){ m_height = height; }
+	void SetRadius(float radius){ m_radius = radius; }
+	void SetEmitterType(EmitterType type){ m_type = type; }
+	void SetRandomStartDirection(bool on){  }
 	
 	void Update(float gameTime);
 
