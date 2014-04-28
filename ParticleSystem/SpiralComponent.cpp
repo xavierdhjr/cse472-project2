@@ -5,7 +5,7 @@
 CSpiralComponent::CSpiralComponent(void)
 {
 	m_period = 2.0f;
-	m_center = new vec3(0, -1, 0);
+	m_center = vec3(0, -1, 0);
 	m_primaryaxis = 1;
 	m_radius = 1.;
 	m_angle = 0.;
@@ -16,7 +16,7 @@ CSpiralComponent::CSpiralComponent(void)
 CSpiralComponent::CSpiralComponent(float period, vec3 center, float radius, float lifetime)
 {
 	m_period = period;
-	m_center = new vec3(center);
+	m_center = vec3(center);
 	float components[3] = {abs(center.x), abs(center.y), abs(center.z)};
 	float max = 0;
 	m_primaryaxis = 0;
@@ -41,23 +41,23 @@ CSpiralComponent::~CSpiralComponent(void)
 
 void CSpiralComponent::Update(CParticle* particle, float dt)
 {
-	(*particle).velocity = *(new vec3(0., 0., 0.));
+	(*particle).velocity = vec3(0., 0., 0.);
 	m_time += dt;
 	if (m_time > m_lifetime)
 		m_time = 0.;
 	m_angle += dt * m_period * TWOPI;
 	if (m_angle > TWOPI)
 		m_angle -= TWOPI;
-	vec3 * rotation_component;
+	vec3 rotation_component;
 	if (m_primaryaxis == 0)
 	{
-		rotation_component = new vec3(0., m_radius * cos(m_angle), m_radius * sin(m_angle));
+		rotation_component = vec3(0., m_radius * cos(m_angle), m_radius * sin(m_angle));
 	} else if (m_primaryaxis == 1)
 	{
-		rotation_component = new vec3(m_radius * cos(m_angle), 0., m_radius * sin(m_angle));
+		rotation_component = vec3(m_radius * cos(m_angle), 0., m_radius * sin(m_angle));
 	} else 
 	{
-		rotation_component = new vec3(m_radius * cos(m_angle), m_radius * sin(m_angle), 0.);
+		rotation_component = vec3(m_radius * cos(m_angle), m_radius * sin(m_angle), 0.);
 	}
-	(*particle).position = (*m_center) * m_time + *rotation_component;
+	(*particle).position = m_center * m_time + rotation_component;
 }

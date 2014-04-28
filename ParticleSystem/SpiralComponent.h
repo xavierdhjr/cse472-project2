@@ -14,7 +14,7 @@ public:
 	virtual void Update(CParticle* particle, float dt);
 
 private:
-	vec3 * m_center;
+	vec3 m_center;
 	float m_period;
 	int m_primaryaxis;
 	float m_radius;
