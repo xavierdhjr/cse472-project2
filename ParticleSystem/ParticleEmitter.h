@@ -21,7 +21,7 @@ struct CParticle
 {
 	CParticle()
 	{
-		color = vec4(1,1,1,1);
+		color = vec4(.97,0.5,0,1);
 		position = vec3(0,0,0);
 		velocity = vec3(0,0,0);
 		lifetime = 2;
