@@ -21,9 +21,10 @@ struct CParticle
 {
 	CParticle()
 	{
-		color = vec4(1,1,1,1);
+		color = vec4(.97,0.5,0,1);
 		position = vec3(0,0,0);
 		velocity = vec3(0,0,0);
+		rotation = 0;
 		lifetime = 2;
 		age = 0;
 		size = 1;
@@ -32,7 +33,8 @@ struct CParticle
 	vec4 color;
 	vec3 position;
 	vec3 velocity;
-	mat4 rotation;
+	//mat4 rotation;
+	float rotation;
 	float lifetime;
 	float age;
 	float size;
@@ -47,11 +49,13 @@ class CParticleEmitter
 public:
 	enum EmitterType 
 	{
+		Point,
 		Sphere,
 		Box
 	};
 
 	CParticleEmitter(void);
+	CParticleEmitter(vec3 startPosition, float emissionRate = 0.5f, float lifetime=10, float size=1, vec3 initialVelocity = vec3(0,0,0), bool randomStartDirection=false);
 	CParticleEmitter(vec3 startPosition, float radius, float emissionRate = 0.5f, float lifetime=10, float size=1, vec3 initialVelocity = vec3(0,0,0), bool randomStartDirection=false);
 	CParticleEmitter(vec3 startPosition, float height, float width, float emissionRate = 0.5f, float lifetime=10, float size=1, vec3 initialVelocity = vec3(0,0,0), bool randomStartDirection=false);
 	~CParticleEmitter(void);

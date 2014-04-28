@@ -115,6 +115,7 @@
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="RandomDirectionComponent.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="RotationComponent.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WaveformComponent.h" />
@@ -131,6 +132,7 @@
     <ClCompile Include="ParticleEmitter.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="RandomDirectionComponent.cpp" />
+    <ClCompile Include="RotationComponent.cpp" />
     <ClCompile Include="ShaderWnd\glew.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

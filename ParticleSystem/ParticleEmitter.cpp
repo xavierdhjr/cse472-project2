@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include <vector>
+#include <math.h>
 #include "ParticleEmitter.h"
 #include "ParticleComponent.h"
 
@@ -18,6 +19,17 @@ inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
     glVertex3dv(v3);
     glVertex3dv(v4);
     glEnd();
+}
+
+CParticleEmitter::CParticleEmitter(vec3 startPosition, float emissionRate, float lifetime, float size, vec3 initialVelocity, bool randomStartDirection)
+{
+	m_startPosition = startPosition;
+	m_emissionRate = emissionRate;
+	m_timer = 0;
+	m_lifetime = lifetime;
+	m_size = size;
+
+	m_type = CParticleEmitter::Point;
 }
 
 CParticleEmitter::CParticleEmitter(vec3 startPosition, float radius, float emissionRate, float lifetime, float size, vec3 initialVelocity, bool randomStartDirection)
@@ -68,10 +80,31 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	(*it)->position = (*it)->position + (*it)->velocity * gameTime;
 
 	// draw particle
-	GLdouble a[] = {(*it)->position.x - (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
-	GLdouble b[] = {(*it)->position.x + (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
-	GLdouble c[] = {(*it)->position.x - (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
-	GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
+	GLdouble a[] = {-(*it)->size, (*it)->size, (*it)->position.z};
+	GLdouble b[] = {(*it)->size, (*it)->size, (*it)->position.z};
+	GLdouble c[] = {-(*it)->size, -(*it)->size, (*it)->position.z};
+	GLdouble d[] = {(*it)->size, -(*it)->size, (*it)->position.z};
+
+	// move particle back
+
+	// TODO: rotate particle
+	float x, y;
+	x = a[0];
+	y = a[1];
+	a[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
+	a[1] =  y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
+	x = b[0];
+	y = b[1];
+	b[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
+	b[1] = y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
+	x = c[0];
+	y = c[1];
+	c[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
+	c[1] =  y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
+	x = d[0];
+	y = d[1];
+	d[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
+	d[1] = y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
 
 	glColor4f(p->color.r,p->color.g,p->color.b, p->color.a);
 	Quad(a,c,d,b);
@@ -113,6 +146,28 @@ void CParticleEmitter::Update(float gameTime)
 		CParticle *particle = new CParticle();
 		particle->lifetime = m_lifetime;
 		particle->size = m_size;
+		float x, y, ylim;
+		// determine starting location
+		switch(m_type)
+		{
+			case Point:
+				break;
+			case Sphere:
+				// figure out random location within circle
+				x = fmod(rand() , (2*m_radius)) - m_radius;
+				ylim = sqrt(m_radius * m_radius - x * x);
+				y = fmod(rand(), (2 * ylim)) - ylim;
+				particle->position = vec3(x,y,0);
+				break;
+			case Box:
+				// figure out random location within box
+				x = fmod(rand(), (2*m_width)) - m_width;
+				y = fmod(rand(), (2 * m_height)) - m_height;
+				particle->position = vec3(x,y,0);
+				break;
+
+		}
+
 		m_particles.push_back(particle);
 
 

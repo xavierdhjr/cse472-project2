@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="AccelerationComponent.cpp" />
+    <ClCompile Include="AlphaComponent.cpp" />
+    <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="graphics\GrTexture.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="OpenGLWnd.cpp" />
+    <ClCompile Include="ParticleComponent.cpp" />
+    <ClCompile Include="ParticleEmitter.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="ShaderWnd\glew.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="AlphaOverLifetimeComponent.cpp" />
+    <ClCompile Include="RandomDirectionComponent.cpp" />
+<<<<<<< HEAD
+    <ClCompile Include="WaveformComponent.cpp" />
+=======
+    <ClCompile Include="RotationComponent.cpp" />
+>>>>>>> daf80a5a51a021fb0f1bb377767bb3e1068fd733
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AccelerationComponent.h" />
+    <ClInclude Include="AlphaComponent.h" />
+    <ClInclude Include="ChildView.h" />
+    <ClInclude Include="graphics\GrTexture.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="OpenGLWnd.h" />
+    <ClInclude Include="ParticleComponent.h" />
+    <ClInclude Include="ParticleEmitter.h" />
+    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="AlphaOverLifetimeComponent.h" />
+    <ClInclude Include="RandomDirectionComponent.h" />
+<<<<<<< HEAD
+    <ClInclude Include="WaveformComponent.h" />
+=======
+    <ClInclude Include="RotationComponent.h" />
+>>>>>>> daf80a5a51a021fb0f1bb377767bb3e1068fd733
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ParticleSystem.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\ParticleSystem.ico" />
+    <None Include="res\ParticleSystem.rc2" />
+    <None Include="res\Toolbar.bmp" />
+    <None Include="res\Toolbar256.bmp" />
+    <None Include="UserImages.bmp" />
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\..\..\..\Program Files (x86)\Mega-Nerd\libsndfile\lib\libsndfile-1.lib" />
+  </ItemGroup>
+</Project>
