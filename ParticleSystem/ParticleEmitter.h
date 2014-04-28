@@ -24,6 +24,7 @@ struct CParticle
 		color = vec4(.97,0.5,0,1);
 		position = vec3(0,0,0);
 		velocity = vec3(0,0,0);
+		rotation = 0;
 		lifetime = 2;
 		age = 0;
 		size = 1;
@@ -32,7 +33,8 @@ struct CParticle
 	vec4 color;
 	vec3 position;
 	vec3 velocity;
-	mat4 rotation;
+	//mat4 rotation;
+	float rotation;
 	float lifetime;
 	float age;
 	float size;

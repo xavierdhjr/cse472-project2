@@ -80,10 +80,31 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	(*it)->position = (*it)->position + (*it)->velocity * gameTime;
 
 	// draw particle
-	GLdouble a[] = {(*it)->position.x - (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
-	GLdouble b[] = {(*it)->position.x + (*it)->size, (*it)->position.y + (*it)->size, (*it)->position.z};
-	GLdouble c[] = {(*it)->position.x - (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
-	GLdouble d[] = {(*it)->position.x + (*it)->size, (*it)->position.y - (*it)->size, (*it)->position.z};
+	GLdouble a[] = {-(*it)->size, (*it)->size, (*it)->position.z};
+	GLdouble b[] = {(*it)->size, (*it)->size, (*it)->position.z};
+	GLdouble c[] = {-(*it)->size, -(*it)->size, (*it)->position.z};
+	GLdouble d[] = {(*it)->size, -(*it)->size, (*it)->position.z};
+
+	// move particle back
+
+	// TODO: rotate particle
+	float x, y;
+	x = a[0];
+	y = a[1];
+	a[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
+	a[1] =  y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
+	x = b[0];
+	y = b[1];
+	b[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
+	b[1] = y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
+	x = c[0];
+	y = c[1];
+	c[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
+	c[1] =  y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
+	x = d[0];
+	y = d[1];
+	d[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
+	d[1] = y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
 
 	glColor4f(p->color.r,p->color.g,p->color.b, p->color.a);
 	Quad(a,c,d,b);
