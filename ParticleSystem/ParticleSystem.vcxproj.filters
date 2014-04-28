@@ -14,6 +14,7 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="AlphaOverLifetimeComponent.cpp" />
     <ClCompile Include="RandomDirectionComponent.cpp" />
+    <ClCompile Include="WaveformComponent.cpp" />
     <ClCompile Include="RotationComponent.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
   </ItemGroup>
@@ -32,6 +33,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="AlphaOverLifetimeComponent.h" />
     <ClInclude Include="RandomDirectionComponent.h" />
+    <ClInclude Include="WaveformComponent.h" />
     <ClInclude Include="RotationComponent.h" />
     <ClInclude Include="CollisionComponent.h" />
   </ItemGroup>
@@ -45,5 +47,9 @@
     <None Include="res\Toolbar.bmp" />
     <None Include="res\Toolbar256.bmp" />
     <None Include="UserImages.bmp" />
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\..\..\..\Program Files (x86)\Mega-Nerd\libsndfile\lib\libsndfile-1.lib" />
   </ItemGroup>
 </Project>
