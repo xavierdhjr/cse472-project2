@@ -125,7 +125,14 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	d[1] = y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
 
 	glColor4f(p->color.r,p->color.g,p->color.b, p->color.a);
+
+	glEnable( GL_TEXTURE_2D );
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glBindTexture(GL_TEXTURE_2D, m_particleTexture.TexName());
+	
 	Quad(a,c,d,b);
+
+	glDisable( GL_TEXTURE_2D );
 }
 
 void CParticleEmitter::RegisterComponent(CParticleComponent *component)
@@ -186,6 +193,8 @@ void CParticleEmitter::Update(float gameTime)
 				break;
 
 		}
+
+		//particle->texture = &m_particleTexture;
 
 		m_particles.push_back(particle);
 

@@ -72,6 +72,7 @@ public:
 	void SetRadius(float radius){ m_radius = radius; }
 	void SetEmitterType(EmitterType type){ m_type = type; }
 	void SetRandomStartDirection(bool on){  }
+	void SetParticleTexture(LPCTSTR fileLocation) { m_particleTexture.LoadFile(fileLocation); }
 	
 	void Update(float gameTime);
 
@@ -90,5 +91,6 @@ private:
 	float m_radius;
 	float m_height;
 	float m_width;
+	CGrTexture m_particleTexture;
 };
 
