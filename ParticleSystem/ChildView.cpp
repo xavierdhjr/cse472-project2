@@ -23,7 +23,7 @@ CChildView::CChildView()
 	m_current = std::clock();
 	
 	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
-	emitter = new CParticleEmitter(vec3(0,0,0), 10, 15, 40000.5f, 0.5f, 0.1, vec3(0,0,0), false);
+	emitter = new CParticleEmitter(vec3(0,0,0), 10, 15, 40000000.5f, 0.5f, 0.1, vec3(0,0,0), false);
 	emitter->RegisterComponent(accel);
 	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
 	emitter->RegisterComponent(new CRandomDirectionComponent());
@@ -121,7 +121,7 @@ void CChildView::OnGLDraw(CDC * pDC)
 
      // Create the timer
 	if(m_Timer == 0)
-	     m_Timer = SetTimer(1, 30, NULL);
+	     m_Timer = SetTimer(1, 0.000001, NULL);
 
 	// update stuffs
 	emitter->Update((float)(( std::clock() - m_current ) / (double) CLOCKS_PER_SEC));
