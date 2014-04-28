@@ -27,7 +27,7 @@ CChildView::CChildView()
 	emitter = new CParticleEmitter(vec3(0,0,0), 10, 15, 40000000.5f, 3, 0.5, vec3(0,0,0), false);
 	//emitter->RegisterComponent(accel);
 	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
-	emitter->RegisterComponent(new CRotationComponent(0,50000));
+	emitter->RegisterComponent(new CRotationComponent(10));
 	//emitter->RegisterComponent(new CRandomDirectionComponent());
 	m_Timer = 0;
 

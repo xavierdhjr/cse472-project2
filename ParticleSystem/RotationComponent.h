@@ -7,7 +7,7 @@ class CRotationComponent :
 {
 public:
 	CRotationComponent(void);
-	CRotationComponent(float rotation, float angularVelocity = 0);
+	CRotationComponent(float angularVelocity);
     ~CRotationComponent(void);
 
 	virtual void Update(CParticle* particle, float dt);
@@ -15,7 +15,6 @@ public:
 
 
 private:
-	float m_rotation;
 	float m_angularVelocity;
 };
 
