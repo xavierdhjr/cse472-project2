@@ -29,8 +29,16 @@ CChildView::CChildView()
 	emitter = new CParticleEmitter();
 	emitter->SetEmissionRate(40000000.5f);
 	
+	// Extend the lifetime so that they don't disappear as quickly (snow)
+	// emitter->SetParticleLifetime(1.0f);
 
-	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
+	// For smaller snow particles
+	// emitter->SetParticleSize(.50f);
+
+	// For slow falling snow
+	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
+	
+	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
 	CColorChangeComponent* redtoblue = new CColorChangeComponent();
 	//emitter = new CParticleEmitter(vec3(0,0,0), 100, 10, 40000000.5f, 3, 0.5, vec3(0,0,0), false);
 	emitter->RegisterComponent(accel);
@@ -38,8 +46,10 @@ CChildView::CChildView()
 	emitter->RegisterComponent(new CRotationComponent(10));
 	//emitter->RegisterComponent(new CWaveformComponent("C:\\Users\\Raider\\Desktop\\MSU\\SS14\\cse472-project2\\dub.wav"));
 	emitter->RegisterComponent(new CRandomDirectionComponent());
-	emitter->RegisterComponent(redtoblue);
-	// emitter->SetParticleTexture(L"textures/Checkerboard.bmp");
+	//emitter->RegisterComponent(redtoblue);
+	
+	// Setting the snowflake texture
+	//emitter->SetParticleTexture(L"textures/Snowflake2.png");
 	m_Timer = 0;
 
 

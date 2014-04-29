@@ -9,7 +9,7 @@ using namespace std;
 //
 //        Name : Quad()
 // Description : Inline function for drawing 
-//               a quadralateral.
+//               a quadrilateral.
 //
 inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
 {
@@ -130,7 +130,18 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glBindTexture(GL_TEXTURE_2D, m_particleTexture.TexName());
 	
-	Quad(a,c,d,b);
+	//Quad(a,c,d,b);
+
+	glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
+    glVertex3dv(a);
+    glTexCoord2f(0, 0);
+    glVertex3dv(c);
+    glTexCoord2f(1, 0);
+    glVertex3dv(d);
+    glTexCoord2f(1, 1);
+    glVertex3dv(b);
+    glEnd();
 
 	glDisable( GL_TEXTURE_2D );
 }
