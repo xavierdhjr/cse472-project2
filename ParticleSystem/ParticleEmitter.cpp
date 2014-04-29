@@ -124,7 +124,7 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	d[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
 	d[1] = y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
 
-	//glColor4f(p->color.r,p->color.g,p->color.b, p->color.a);
+	glColor4f(p->color.r,p->color.g,p->color.b, p->color.a);
 
 	glEnable( GL_TEXTURE_2D );
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
