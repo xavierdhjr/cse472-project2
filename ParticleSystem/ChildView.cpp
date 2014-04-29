@@ -11,6 +11,7 @@
 #include "RotationComponent.h"
 #include "WaveformComponent.h"
 #include "SpiralComponent.h"
+#include "ColorChangeComponent.h"
 #include <ctime>
 
 
@@ -30,12 +31,14 @@ CChildView::CChildView()
 	
 
 	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
+	CColorChangeComponent* redtoblue = new CColorChangeComponent();
 	//emitter = new CParticleEmitter(vec3(0,0,0), 100, 10, 40000000.5f, 3, 0.5, vec3(0,0,0), false);
 	emitter->RegisterComponent(accel);
 	//emitter->RegisterComponent(new CSpiralComponent());
 	emitter->RegisterComponent(new CRotationComponent(10));
 	//emitter->RegisterComponent(new CWaveformComponent("C:\\Users\\Raider\\Desktop\\MSU\\SS14\\cse472-project2\\dub.wav"));
 	emitter->RegisterComponent(new CRandomDirectionComponent());
+	emitter->RegisterComponent(redtoblue);
 	m_Timer = 0;
 
 

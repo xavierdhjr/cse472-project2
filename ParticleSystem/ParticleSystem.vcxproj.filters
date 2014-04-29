@@ -17,6 +17,7 @@
     <ClCompile Include="SpiralComponent.cpp" />
     <ClCompile Include="WaveformComponent.cpp" />
     <ClCompile Include="RotationComponent.cpp" />
+    <ClCompile Include="ColorChangeComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccelerationComponent.h" />
@@ -36,6 +37,7 @@
     <ClInclude Include="SpiralComponent.h" />
     <ClInclude Include="WaveformComponent.h" />
     <ClInclude Include="RotationComponent.h" />
+    <ClInclude Include="ColorChangeComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ParticleSystem.rc" />
@@ -47,5 +49,6 @@
     <None Include="res\Toolbar.bmp" />
     <None Include="res\Toolbar256.bmp" />
     <None Include="UserImages.bmp" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>
