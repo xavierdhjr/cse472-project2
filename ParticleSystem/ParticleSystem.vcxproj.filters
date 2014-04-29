@@ -14,6 +14,7 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="AlphaOverLifetimeComponent.cpp" />
     <ClCompile Include="RandomDirectionComponent.cpp" />
+    <ClCompile Include="SpiralComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccelerationComponent.h" />
@@ -30,6 +31,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="AlphaOverLifetimeComponent.h" />
     <ClInclude Include="RandomDirectionComponent.h" />
+    <ClInclude Include="SpiralComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ParticleSystem.rc" />
