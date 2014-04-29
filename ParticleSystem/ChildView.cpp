@@ -12,6 +12,7 @@
 #include "WaveformComponent.h"
 #include "SpiralComponent.h"
 #include "ColorChangeComponent.h"
+#include "RandomStartPositionComponent.h"
 #include <ctime>
 
 
@@ -36,20 +37,22 @@ CChildView::CChildView()
 	// emitter->SetParticleSize(.50f);
 
 	// For slow falling snow
-	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
+	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
 	
 	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
-	CColorChangeComponent* redtoblue = new CColorChangeComponent();
+	//CColorChangeComponent* redtoblue = new CColorChangeComponent();
 	//emitter = new CParticleEmitter(vec3(0,0,0), 100, 10, 40000000.5f, 3, 0.5, vec3(0,0,0), false);
-	emitter->RegisterComponent(accel);
+	//emitter->RegisterComponent(accel);
 	//emitter->RegisterComponent(new CSpiralComponent());
-	emitter->RegisterComponent(new CRotationComponent(10));
-	//emitter->RegisterComponent(new CWaveformComponent("C:\\Users\\Raider\\Desktop\\MSU\\SS14\\cse472-project2\\dub.wav"));
-	emitter->RegisterComponent(new CRandomDirectionComponent());
+	//emitter->RegisterComponent(new CRotationComponent(10));
+	//emitter->RegisterComponent(new CWaveformComponent("sounds/dub.wav"));
+	//emitter->RegisterComponent(new CRandomDirectionComponent());
 	//emitter->RegisterComponent(redtoblue);
 	
 	// Setting the snowflake texture
-	//emitter->SetParticleTexture(L"textures/Snowflake2.png");
+	//emitter->SetParticleTexture(L"textures/Snowflake.png");
+
+	FireParticles();
 	m_Timer = 0;
 
 
@@ -163,4 +166,20 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 
 	Invalidate();
 	COpenGLWnd::OnTimer(nIDEvent);
+}
+
+
+void CChildView::FireParticles(void)
+{
+	emitter->SetParticleLifetime(10);
+	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
+	emitter->RegisterComponent(new CRotationComponent(2));
+	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,0.1f,0)));
+	emitter->RegisterComponent(new CRandomStartPositionComponent());
+}
+void CChildView::SnowParticles(void)
+{
+}
+void CChildView::SmokeParticles(void)
+{
 }

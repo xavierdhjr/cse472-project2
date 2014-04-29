@@ -46,5 +46,8 @@ private:
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 
+	void FireParticles(void);
+	void SnowParticles(void);
+	void SmokeParticles(void);
 };
 

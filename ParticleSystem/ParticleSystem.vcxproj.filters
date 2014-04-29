@@ -18,6 +18,7 @@
     <ClCompile Include="WaveformComponent.cpp" />
     <ClCompile Include="RotationComponent.cpp" />
     <ClCompile Include="ColorChangeComponent.cpp" />
+    <ClCompile Include="RandomStartPositionComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccelerationComponent.h" />
@@ -38,6 +39,7 @@
     <ClInclude Include="WaveformComponent.h" />
     <ClInclude Include="RotationComponent.h" />
     <ClInclude Include="ColorChangeComponent.h" />
+    <ClInclude Include="RandomStartPositionComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ParticleSystem.rc" />
