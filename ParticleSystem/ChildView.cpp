@@ -180,10 +180,12 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 void CChildView::FireParticles(void)
 {
 	
+	emitter->SetParticleSize(0.5f);
 	emitter->SetParticleLifetime(3);
 	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
 	//emitter->RegisterComponent(new CRotationComponent(2));
 	emitter->RegisterComponent(new CRandomDirectionComponent(vec3(-0.5f,0,0), vec3(0.5f,0,0)));
+	emitter->RegisterComponent(new CColorChangeComponent(vec4(250.f/255.f,187.f/255.f,0,1),vec4(1,0,0,1),1.5f));
 	emitter->RegisterComponent(new CRandomLifetimeComponent(1.f,3.f));
 	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
 	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,0.1f,0)));
@@ -192,9 +194,31 @@ void CChildView::FireParticles(void)
 }
 void CChildView::SnowParticles(void)
 {
+	emitter->SetParticleLifetime(3);
+	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
+	//emitter->RegisterComponent(new CRotationComponent(2));
+	emitter->RegisterComponent(new CRandomDirectionComponent(vec3(-0.5f,0,0), vec3(0.5f,0,0)));
+	//emitter->RegisterComponent(new CColorChangeComponent(vec4(250.f/255.f,187.f/255.f,0,1),vec4(1,0,0,1),1.5f));
+	emitter->RegisterComponent(new CRandomLifetimeComponent(1.f,3.f));
+	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
+	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,-0.1f,0)));
+	emitter->RegisterComponent(new CRandomStartPositionComponent(vec3(20,12,0),vec3(-20,12,0)));
+	emitter->SetParticleSize(0.1f);
+
 }
 void CChildView::SmokeParticles(void)
-{
+{	
+	
+	emitter->SetParticleSize(.3f);
+	emitter->SetParticleLifetime(3);
+	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
+	//emitter->RegisterComponent(new CRotationComponent(2));
+	emitter->RegisterComponent(new CRandomDirectionComponent(vec3(-1.f,0,0), vec3(1.f,0,0)));
+	//emitter->RegisterComponent(new CColorChangeComponent(vec4(250.f/255.f,187.f/255.f,0,1),vec4(1,0,0,1),1.5f));
+	emitter->RegisterComponent(new CRandomLifetimeComponent(1.f,3.f));
+	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
+	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,0.1f,0)));
+	emitter->RegisterComponent(new CRandomStartPositionComponent(vec3(-0.1,0,0),vec3(0.1,0,0)));
 }
 
 
