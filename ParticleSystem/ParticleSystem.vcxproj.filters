@@ -19,6 +19,7 @@
     <ClCompile Include="RotationComponent.cpp" />
     <ClCompile Include="ColorChangeComponent.cpp" />
     <ClCompile Include="RandomStartPositionComponent.cpp" />
+    <ClCompile Include="RandomLifetimeComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccelerationComponent.h" />
@@ -40,6 +41,7 @@
     <ClInclude Include="RotationComponent.h" />
     <ClInclude Include="ColorChangeComponent.h" />
     <ClInclude Include="RandomStartPositionComponent.h" />
+    <ClInclude Include="RandomLifetimeComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ParticleSystem.rc" />

@@ -13,6 +13,7 @@
 #include "SpiralComponent.h"
 #include "ColorChangeComponent.h"
 #include "RandomStartPositionComponent.h"
+#include "RandomLifetimeComponent.h"
 #include <ctime>
 
 
@@ -178,11 +179,16 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 
 void CChildView::FireParticles(void)
 {
-	emitter->SetParticleLifetime(10);
+	
+	emitter->SetParticleLifetime(3);
 	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
-	emitter->RegisterComponent(new CRotationComponent(2));
+	//emitter->RegisterComponent(new CRotationComponent(2));
+	emitter->RegisterComponent(new CRandomDirectionComponent(vec3(-0.5f,0,0), vec3(0.5f,0,0)));
+	emitter->RegisterComponent(new CRandomLifetimeComponent(1.f,3.f));
+	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
 	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,0.1f,0)));
 	emitter->RegisterComponent(new CRandomStartPositionComponent());
+	
 }
 void CChildView::SnowParticles(void)
 {

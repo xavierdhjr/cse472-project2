@@ -115,6 +115,7 @@
     <ClInclude Include="ParticleEmitter.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="RandomDirectionComponent.h" />
+    <ClInclude Include="RandomLifetimeComponent.h" />
     <ClInclude Include="RandomStartPositionComponent.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SpiralComponent.h" />
@@ -136,6 +137,7 @@
     <ClCompile Include="ParticleEmitter.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="RandomDirectionComponent.cpp" />
+    <ClCompile Include="RandomLifetimeComponent.cpp" />
     <ClCompile Include="RandomStartPositionComponent.cpp" />
     <ClCompile Include="RotationComponent.cpp" />
     <ClCompile Include="ShaderWnd\glew.cpp" />
