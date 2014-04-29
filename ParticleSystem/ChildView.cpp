@@ -9,7 +9,10 @@
 #include "AlphaOverLifetimeComponent.h"
 #include "RandomDirectionComponent.h"
 #include "RotationComponent.h"
-#include "CollisionComponent.h"
+#include "WaveformComponent.h"
+#include "SpiralComponent.h"
+#include "ColorChangeComponent.h"
+#include "RandomStartPositionComponent.h"
 #include <ctime>
 
 
@@ -24,20 +27,40 @@ CChildView::CChildView()
 {
 	m_current = std::clock();
 	
-	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
-	emitter = new CParticleEmitter(vec3(0,5,0), 1, 15, 10.5f, 300, 0.3, vec3(0,0,0), false);
-	emitter->RegisterComponent(accel);
-	//emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
+	emitter = new CParticleEmitter();
+	emitter->SetEmissionRate(40000000.5f);
+	
+	// Extend the lifetime so that they don't disappear as quickly (snow)
+	// emitter->SetParticleLifetime(1.0f);
+
+	// For smaller snow particles
+	// emitter->SetParticleSize(.50f);
+
+	// For slow falling snow
+	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
+	
+	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
+	//CColorChangeComponent* redtoblue = new CColorChangeComponent();
+	//emitter = new CParticleEmitter(vec3(0,0,0), 100, 10, 40000000.5f, 3, 0.5, vec3(0,0,0), false);
+	//emitter->RegisterComponent(accel);
+	//emitter->RegisterComponent(new CSpiralComponent());
 	//emitter->RegisterComponent(new CRotationComponent(10));
-	emitter->RegisterComponent(new CCollisionComponent(-5));
+	//emitter->RegisterComponent(new CWaveformComponent("sounds/dub.wav"));
 	//emitter->RegisterComponent(new CRandomDirectionComponent());
+	//emitter->RegisterComponent(redtoblue);
+	
+	// Setting the snowflake texture
+	//emitter->SetParticleTexture(L"textures/Snowflake.png");
+
+	FireParticles();
 	m_Timer = 0;
 
 
 }
 
 CChildView::~CChildView()
-{
+{	
+	delete emitter;
 }
 
 
@@ -143,4 +166,20 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 
 	Invalidate();
 	COpenGLWnd::OnTimer(nIDEvent);
+}
+
+
+void CChildView::FireParticles(void)
+{
+	emitter->SetParticleLifetime(10);
+	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
+	emitter->RegisterComponent(new CRotationComponent(2));
+	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,0.1f,0)));
+	emitter->RegisterComponent(new CRandomStartPositionComponent());
+}
+void CChildView::SnowParticles(void)
+{
+}
+void CChildView::SmokeParticles(void)
+{
 }

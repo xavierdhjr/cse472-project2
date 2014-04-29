@@ -9,7 +9,7 @@ using namespace std;
 //
 //        Name : Quad()
 // Description : Inline function for drawing 
-//               a quadralateral.
+//               a quadrilateral.
 //
 inline void Quad(GLdouble *v1, GLdouble *v2, GLdouble *v3, GLdouble *v4)
 {
@@ -59,12 +59,30 @@ CParticleEmitter::CParticleEmitter(vec3 startPosition, float height, float width
 
 CParticleEmitter::CParticleEmitter(void)
 {
+	m_startPosition = vec3(0,0,0);
+	m_emissionRate = 5;
+	m_timer = 0;
+	m_lifetime = 0.5f;
+	m_size = 0.25f;
 
+	m_type = CParticleEmitter::Box;
+	m_height = 1;
+	m_width = 1;
 }
 
 
 CParticleEmitter::~CParticleEmitter(void)
 {
+	
+	for(int i = 0; i < m_components.size(); ++i)
+	{
+		delete m_components[i];
+	}
+	
+	for(int i = 0; i < m_particles.size(); ++i)
+	{
+		delete m_particles[i];
+	}
 }
 
 void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float gameTime)
@@ -106,8 +124,26 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 	d[0] = x*cos((*it)->rotation) - y*sin((*it)->rotation) + (*it)->position.x;
 	d[1] = y*cos((*it)->rotation) + x*sin((*it)->rotation) + (*it)->position.y;
 
-	glColor4f(p->color.r,p->color.g,p->color.b, p->color.a);
-	Quad(a,c,d,b);
+	//glColor4f(p->color.r,p->color.g,p->color.b, p->color.a);
+
+	glEnable( GL_TEXTURE_2D );
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glBindTexture(GL_TEXTURE_2D, m_particleTexture.TexName());
+	
+	//Quad(a,c,d,b);
+
+	glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
+    glVertex3dv(a);
+    glTexCoord2f(0, 0);
+    glVertex3dv(c);
+    glTexCoord2f(1, 0);
+    glVertex3dv(d);
+    glTexCoord2f(1, 1);
+    glVertex3dv(b);
+    glEnd();
+
+	glDisable( GL_TEXTURE_2D );
 }
 
 void CParticleEmitter::RegisterComponent(CParticleComponent *component)
@@ -125,6 +161,7 @@ void CParticleEmitter::Update(float gameTime)
 		(*it)->age += gameTime;
 		if((*it)->age > (*it)->lifetime)
 		{
+			delete (*it);
 			it = m_particles.erase(it);
 			//it--; // reset
 			if(it == m_particles.end())
@@ -167,6 +204,8 @@ void CParticleEmitter::Update(float gameTime)
 				break;
 
 		}
+
+		//particle->texture = &m_particleTexture;
 
 		m_particles.push_back(particle);
 

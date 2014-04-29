@@ -21,7 +21,7 @@ struct CParticle
 {
 	CParticle()
 	{
-		color = vec4(.97,0.5,0,1);
+		color = vec4(.5,0.5,0.5,1);
 		position = vec3(0,0,0);
 		velocity = vec3(0,0,0);
 		rotation = 0;
@@ -62,6 +62,17 @@ public:
 
 	void RegisterComponent(CParticleComponent * component);
 
+	void SetStartPosition(vec3 pos){ m_startPosition = pos; }
+	void SetEmissionRate(float rate){ m_emissionRate = rate; }
+	void SetParticleLifetime(float lifetime){ m_lifetime = lifetime; }
+	void SetParticleSize(float size){ m_size = size; }
+	void SetInitialVelocity(vec3 velocity){  }
+	void SetWidth(float width){ m_width = width; }
+	void SetHeight(float height){ m_height = height; }
+	void SetRadius(float radius){ m_radius = radius; }
+	void SetEmitterType(EmitterType type){ m_type = type; }
+	void SetRandomStartDirection(bool on){  }
+	void SetParticleTexture(LPCTSTR fileLocation) { m_particleTexture.LoadFile(fileLocation); }
 	
 	void Update(float gameTime);
 
@@ -80,5 +91,6 @@ private:
 	float m_radius;
 	float m_height;
 	float m_width;
+	CGrTexture m_particleTexture;
 };
 
