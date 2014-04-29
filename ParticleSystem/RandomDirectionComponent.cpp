@@ -19,11 +19,11 @@ CRandomDirectionComponent::~CRandomDirectionComponent(void)
 
 void CRandomDirectionComponent::Update(CParticle* particle, float dt)
 {
-	if(particle->age == 0)
+	if(particle->age >= 0)
 	{
 		float x = randFloat(m_randMax.x, m_randMin.x);
 		float y = randFloat(m_randMax.y, m_randMin.y);
 		float z = randFloat(m_randMax.z, m_randMin.z);
-		particle->velocity = vec3(x, y, z);
+		particle->velocity == vec3(x, y, z);
 	}
 }

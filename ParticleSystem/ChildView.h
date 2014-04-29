@@ -50,6 +50,8 @@ public:
 	void SnowParticles(void);
 	void SmokeParticles(void);
 	void RainParticles(void);
+	void SparksParticles(void);
+	void MatrixParticles(void);
 	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 };
 

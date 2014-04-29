@@ -182,16 +182,31 @@ void CChildView::FireParticles(void)
 	
 	emitter->SetParticleLifetime(3);
 	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
+	CColorChangeComponent* ch = new CColorChangeComponent(vec4(1,0,0.2,1), vec4(1,0,0.2,1), 1);
 	//emitter->RegisterComponent(new CRotationComponent(2));
 	emitter->RegisterComponent(new CRandomDirectionComponent(vec3(-0.5f,0,0), vec3(0.5f,0,0)));
 	emitter->RegisterComponent(new CRandomLifetimeComponent(1.f,3.f));
 	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
 	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,0.1f,0)));
 	emitter->RegisterComponent(new CRandomStartPositionComponent());
+	emitter->RegisterComponent(ch);
 	
 }
 void CChildView::SnowParticles(void)
 {
+	emitter->SetParticleTexture(L"textures/rain-drop-md.png");
+	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.21f,0));
+	CColorChangeComponent* ch = new CColorChangeComponent(vec4(1,1,1,1), vec4(1,1,1,1), 1);
+	emitter->SetParticleLifetime(2);
+	emitter->SetParticleSize(0.1f);
+	emitter->SetEmitterType(CParticleEmitter::Box);
+	emitter->SetWidth(10);
+	emitter->SetHeight(1);
+	emitter->SetStartPosition(vec3(0,10,0));
+	//emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
+	emitter->RegisterComponent(accel);
+	emitter->RegisterComponent(ch);
+
 }
 void CChildView::SmokeParticles(void)
 {
@@ -219,13 +234,13 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		SnowParticles();
 		break;
 	case '4':
-	
+		SparksParticles();
 		break;
 	case '5':
-		
+		MatrixParticles();
 	break;
 	case '6':
-	
+		
 		break;
 	case '7':
 		
@@ -254,4 +269,38 @@ void CChildView::RainParticles()
 	emitter->SetStartPosition(vec3(0,10,0));
 	//emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
 	emitter->RegisterComponent(accel);
+}
+
+void CChildView::SparksParticles()
+{
+	emitter->SetParticleTexture(L"textures/rain-drop-md.png");
+	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
+	CRandomDirectionComponent* c = new CRandomDirectionComponent();
+	CColorChangeComponent* ch = new CColorChangeComponent(vec4(1,.2,0,1), vec4(1,.2,0,1), 1);
+	emitter->SetParticleLifetime(3);
+	emitter->SetParticleSize(0.1f);
+	emitter->SetEmitterType(CParticleEmitter::Box);
+	emitter->SetWidth(10);
+	emitter->SetHeight(10);
+	emitter->SetStartPosition(vec3(0,0,0));
+	//emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
+	//emitter->RegisterComponent(accel);
+	emitter->RegisterComponent(c);
+	emitter->RegisterComponent(ch);
+}
+
+void CChildView::MatrixParticles()
+{
+	emitter->SetParticleTexture(L"textures/rain-drop-md.png");
+	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
+	CAlphaOverLifetimeComponent* c = new  CAlphaOverLifetimeComponent();
+	emitter->SetParticleLifetime(10);
+	emitter->SetParticleSize(0.1f);
+	emitter->SetEmitterType(CParticleEmitter::Box);
+	emitter->SetWidth(10);
+	emitter->SetHeight(1);
+	emitter->SetStartPosition(vec3(0,10,0));
+	//emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
+	emitter->RegisterComponent(accel);
+	emitter->RegisterComponent(c);
 }
