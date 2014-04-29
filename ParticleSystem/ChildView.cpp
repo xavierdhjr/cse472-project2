@@ -180,11 +180,13 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 void CChildView::FireParticles(void)
 {
 	
+	emitter->SetParticleSize(0.5f);
 	emitter->SetParticleLifetime(3);
 	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
 	CColorChangeComponent* ch = new CColorChangeComponent(vec4(1,0,0.2,1), vec4(1,0,0.2,1), 1);
 	//emitter->RegisterComponent(new CRotationComponent(2));
 	emitter->RegisterComponent(new CRandomDirectionComponent(vec3(-0.5f,0,0), vec3(0.5f,0,0)));
+	emitter->RegisterComponent(new CColorChangeComponent(vec4(250.f/255.f,187.f/255.f,0,1),vec4(1,0,0,1),1.5f));
 	emitter->RegisterComponent(new CRandomLifetimeComponent(1.f,3.f));
 	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
 	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,0.1f,0)));
@@ -194,22 +196,31 @@ void CChildView::FireParticles(void)
 }
 void CChildView::SnowParticles(void)
 {
-	emitter->SetParticleTexture(L"textures/rain-drop-md.png");
-	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.21f,0));
-	CColorChangeComponent* ch = new CColorChangeComponent(vec4(1,1,1,1), vec4(1,1,1,1), 1);
-	emitter->SetParticleLifetime(2);
+	emitter->SetParticleLifetime(3);
+	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
+	//emitter->RegisterComponent(new CRotationComponent(2));
+	emitter->RegisterComponent(new CRandomDirectionComponent(vec3(-0.5f,0,0), vec3(0.5f,0,0)));
+	//emitter->RegisterComponent(new CColorChangeComponent(vec4(250.f/255.f,187.f/255.f,0,1),vec4(1,0,0,1),1.5f));
+	emitter->RegisterComponent(new CRandomLifetimeComponent(1.f,3.f));
+	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
+	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,-0.1f,0)));
+	emitter->RegisterComponent(new CRandomStartPositionComponent(vec3(20,12,0),vec3(-20,12,0)));
 	emitter->SetParticleSize(0.1f);
-	emitter->SetEmitterType(CParticleEmitter::Box);
-	emitter->SetWidth(10);
-	emitter->SetHeight(1);
-	emitter->SetStartPosition(vec3(0,10,0));
-	//emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
-	emitter->RegisterComponent(accel);
-	emitter->RegisterComponent(ch);
 
 }
 void CChildView::SmokeParticles(void)
-{
+{	
+	
+	emitter->SetParticleSize(.3f);
+	emitter->SetParticleLifetime(3);
+	emitter->SetEmitterType(CParticleEmitter::EmitterType::Point);
+	//emitter->RegisterComponent(new CRotationComponent(2));
+	emitter->RegisterComponent(new CRandomDirectionComponent(vec3(-1.f,0,0), vec3(1.f,0,0)));
+	//emitter->RegisterComponent(new CColorChangeComponent(vec4(250.f/255.f,187.f/255.f,0,1),vec4(1,0,0,1),1.5f));
+	emitter->RegisterComponent(new CRandomLifetimeComponent(1.f,3.f));
+	emitter->RegisterComponent(new CAlphaOverLifetimeComponent());
+	emitter->RegisterComponent(new CAccelerationComponent(vec3(0,0.1f,0)));
+	emitter->RegisterComponent(new CRandomStartPositionComponent(vec3(-0.1,0,0),vec3(0.1,0,0)));
 }
 
 
