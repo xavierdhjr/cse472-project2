@@ -39,7 +39,7 @@ CChildView::CChildView()
 	//emitter->RegisterComponent(new CWaveformComponent("C:\\Users\\Raider\\Desktop\\MSU\\SS14\\cse472-project2\\dub.wav"));
 	emitter->RegisterComponent(new CRandomDirectionComponent());
 	emitter->RegisterComponent(redtoblue);
-	emitter->SetParticleTexture(L"textures/Checkerboard.bmp");
+	// emitter->SetParticleTexture(L"textures/Checkerboard.bmp");
 	m_Timer = 0;
 
 
