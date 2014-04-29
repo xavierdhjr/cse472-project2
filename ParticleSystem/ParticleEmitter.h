@@ -72,7 +72,16 @@ public:
 	void SetRadius(float radius){ m_radius = radius; }
 	void SetEmitterType(EmitterType type){ m_type = type; }
 	void SetRandomStartDirection(bool on){  }
-	void SetParticleTexture(LPCTSTR fileLocation) { m_particleTexture.LoadFile(fileLocation); }
+	void SetParticleTexture(LPCTSTR fileLocation) 
+	{ 
+		if(m_particleTexture != NULL && !(*m_particleTexture).IsEmpty())
+		{
+			m_particleTexture->Clear();
+			delete m_particleTexture;	
+		}
+		m_particleTexture = new CGrTexture();
+		m_particleTexture->LoadFile(fileLocation); 
+	}
 	
 	void ClearComponents();
 
@@ -93,6 +102,6 @@ private:
 	float m_radius;
 	float m_height;
 	float m_width;
-	CGrTexture m_particleTexture;
+	CGrTexture* m_particleTexture;
 };
 

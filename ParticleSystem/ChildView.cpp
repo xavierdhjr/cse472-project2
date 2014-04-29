@@ -37,12 +37,12 @@ CChildView::CChildView()
 	// emitter->SetParticleSize(.50f);
 
 	// For slow falling snow
-	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
+	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
 	
 	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
 	//CColorChangeComponent* redtoblue = new CColorChangeComponent();
-	emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
-	emitter->RegisterComponent(accel);
+	//emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
+	//emitter->RegisterComponent(accel);
 	//emitter->RegisterComponent(new CSpiralComponent());
 	//emitter->RegisterComponent(new CRotationComponent(10));
 	//emitter->RegisterComponent(new CWaveformComponent("sounds/dub.wav"));
@@ -50,7 +50,7 @@ CChildView::CChildView()
 	//emitter->RegisterComponent(redtoblue);
 	
 	// Setting the snowflake texture
-	emitter->SetParticleTexture(L"textures/rain-drop-md.png");
+	//emitter->SetParticleTexture(L"textures/rain-drop-md.png");
 
 	//FireParticles();
 	m_Timer = 0;
@@ -201,16 +201,16 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	// call functions here
 	switch (nChar) {
 	case '0':
-	
+		RainParticles();
 		break;
 	case '1':
-		
+		FireParticles();
 		break;
 	case '2':
-	
+		SmokeParticles();
 		break;
 	case '3':
-		
+		SnowParticles();
 		break;
 	case '4':
 	
@@ -233,4 +233,19 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 
 	COpenGLWnd::OnKeyDown(nChar, nRepCnt, nFlags);
+}
+
+
+void CChildView::RainParticles()
+{
+	emitter->SetParticleTexture(L"textures/rain-drop-md.png");
+	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
+	emitter->SetParticleLifetime(2);
+	emitter->SetParticleSize(0.1f);
+	emitter->SetEmitterType(CParticleEmitter::Box);
+	emitter->SetWidth(10);
+	emitter->SetHeight(1);
+	emitter->SetStartPosition(vec3(0,10,0));
+	//emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
+	emitter->RegisterComponent(accel);
 }

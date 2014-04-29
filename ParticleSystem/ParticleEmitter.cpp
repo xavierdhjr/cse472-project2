@@ -59,6 +59,7 @@ CParticleEmitter::CParticleEmitter(vec3 startPosition, float height, float width
 
 CParticleEmitter::CParticleEmitter(void)
 {
+	m_particleTexture = new CGrTexture();
 	m_startPosition = vec3(0,0,0);
 	m_emissionRate = 5;
 	m_timer = 0;
@@ -136,7 +137,7 @@ void CParticleEmitter::DrawParticle(std::vector<CParticle *>::iterator it, float
 
 	glEnable( GL_TEXTURE_2D );
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glBindTexture(GL_TEXTURE_2D, m_particleTexture.TexName());
+	glBindTexture(GL_TEXTURE_2D, m_particleTexture->TexName());
 	
 	//Quad(a,c,d,b);
 

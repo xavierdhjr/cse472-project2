@@ -49,6 +49,7 @@ public:
 	void FireParticles(void);
 	void SnowParticles(void);
 	void SmokeParticles(void);
+	void RainParticles(void);
 	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 };
 
