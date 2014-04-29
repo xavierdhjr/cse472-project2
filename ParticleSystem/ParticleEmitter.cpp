@@ -201,13 +201,13 @@ void CParticleEmitter::Update(float gameTime)
 				// figure out random location within circle
 				x = fmod(rand() , (2*m_radius)) - m_radius;
 				ylim = sqrt(m_radius * m_radius - x * x);
-				y = fmod(rand(), (2 * ylim)) - ylim;
-				particle->position = vec3(x,y,0);
+				y = fmod(rand(), (2 * ylim)) - ylim + m_startPosition.y;
+				particle->position = vec3(x+ m_startPosition.x,y,0);
 				break;
 			case Box:
 				// figure out random location within box
-				x = fmod(rand(), (2*m_width)) - m_width;
-				y = fmod(rand(), (2 * m_height)) - m_height;
+				x = fmod(rand(), (2*m_width)) - m_width + m_startPosition.x;
+				y = fmod(rand(), (2 * m_height)) - m_height + m_startPosition.y;
 				particle->position = vec3(x,y,0);
 				break;
 

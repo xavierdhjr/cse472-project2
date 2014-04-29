@@ -37,12 +37,12 @@ CChildView::CChildView()
 	// emitter->SetParticleSize(.50f);
 
 	// For slow falling snow
-	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
+	CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-.81f,0));
 	
 	//CAccelerationComponent* accel = new CAccelerationComponent(vec3(0,-2.81f,0));
 	//CColorChangeComponent* redtoblue = new CColorChangeComponent();
-	//emitter = new CParticleEmitter(vec3(0,0,0), 100, 10, 40000000.5f, 3, 0.5, vec3(0,0,0), false);
-	//emitter->RegisterComponent(accel);
+	emitter = new CParticleEmitter(vec3(0,10,0), 1, 10, 40000000.5f, 3, 0.1, vec3(0,0,0), false);
+	emitter->RegisterComponent(accel);
 	//emitter->RegisterComponent(new CSpiralComponent());
 	//emitter->RegisterComponent(new CRotationComponent(10));
 	//emitter->RegisterComponent(new CWaveformComponent("sounds/dub.wav"));
@@ -50,9 +50,9 @@ CChildView::CChildView()
 	//emitter->RegisterComponent(redtoblue);
 	
 	// Setting the snowflake texture
-	//emitter->SetParticleTexture(L"textures/Snowflake.png");
+	emitter->SetParticleTexture(L"textures/rain-drop-md.png");
 
-	FireParticles();
+	//FireParticles();
 	m_Timer = 0;
 
 
@@ -67,6 +67,7 @@ CChildView::~CChildView()
 BEGIN_MESSAGE_MAP(CChildView, COpenGLWnd)
 	ON_WM_PAINT()
 	ON_WM_TIMER()
+	ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
 
 
@@ -168,6 +169,12 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 	COpenGLWnd::OnTimer(nIDEvent);
 }
 
+/*void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+
+}*/
+
+
 
 void CChildView::FireParticles(void)
 {
@@ -182,4 +189,48 @@ void CChildView::SnowParticles(void)
 }
 void CChildView::SmokeParticles(void)
 {
+}
+
+
+void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: Add your message handler code here and/or call default
+	emitter->ClearComponents();
+	//cout << nChar << endl;
+	
+	// call functions here
+	switch (nChar) {
+	case '0':
+	
+		break;
+	case '1':
+		
+		break;
+	case '2':
+	
+		break;
+	case '3':
+		
+		break;
+	case '4':
+	
+		break;
+	case '5':
+		
+	break;
+	case '6':
+	
+		break;
+	case '7':
+		
+		break;
+	case '8':
+	
+		break;
+	case '9':
+		
+		break;
+	}
+
+	COpenGLWnd::OnKeyDown(nChar, nRepCnt, nFlags);
 }
