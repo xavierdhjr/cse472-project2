@@ -15,6 +15,8 @@
     <ClCompile Include="AlphaOverLifetimeComponent.cpp" />
     <ClCompile Include="RandomDirectionComponent.cpp" />
     <ClCompile Include="SpiralComponent.cpp" />
+    <ClCompile Include="WaveformComponent.cpp" />
+    <ClCompile Include="RotationComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccelerationComponent.h" />
@@ -32,6 +34,8 @@
     <ClInclude Include="AlphaOverLifetimeComponent.h" />
     <ClInclude Include="RandomDirectionComponent.h" />
     <ClInclude Include="SpiralComponent.h" />
+    <ClInclude Include="WaveformComponent.h" />
+    <ClInclude Include="RotationComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ParticleSystem.rc" />
