@@ -74,6 +74,8 @@ public:
 	void SetRandomStartDirection(bool on){  }
 	void SetParticleTexture(LPCTSTR fileLocation) { m_particleTexture.LoadFile(fileLocation); }
 	
+	void ClearComponents();
+
 	void Update(float gameTime);
 
 private:

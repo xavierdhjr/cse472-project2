@@ -70,6 +70,14 @@ CParticleEmitter::CParticleEmitter(void)
 	m_width = 1;
 }
 
+void CParticleEmitter::ClearComponents()
+{
+	for(int i = 0; i < m_components.size(); i++)
+	{
+		delete m_components[i];
+	}
+	m_components.clear();
+}
 
 CParticleEmitter::~CParticleEmitter(void)
 {
